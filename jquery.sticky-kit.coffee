@@ -14,12 +14,14 @@ $.fn.stick_in_parent = (opts={}) ->
     offset_top
     spacer: manual_spacer
     bottoming: enable_bottoming
+    scrolling_parent: scrolling_parent
   } = opts
 
   offset_top ?= 0
   parent_selector ?= undefined
   inner_scrolling ?= true
   sticky_class ?= "is_stuck"
+  win = scrolling_parent if scrolling_parent
 
   enable_bottoming = true unless enable_bottoming?
 
@@ -67,6 +69,8 @@ $.fn.stick_in_parent = (opts={}) ->
           restore = true
 
         top = elm.offset().top - parseInt(elm.css("margin-top"), 10) - offset_top
+
+        top = (top - win.offset().top) if scrolling_parent
 
         height = elm.outerHeight true
 
@@ -148,8 +152,13 @@ $.fn.stick_in_parent = (opts={}) ->
                   }
 
         else
+
+
           # fixing
           if scroll > top
+
+            offset += win.offset().top + "px" if scrolling_parent
+
             fixed = true
             css = {
               position: "fixed"
