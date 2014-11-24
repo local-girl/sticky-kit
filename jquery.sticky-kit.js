@@ -5,18 +5,17 @@
  */
 
 (function() {
-  var $, win;
+  var $;
 
   $ = this.jQuery || window.jQuery;
 
-  win = $(window);
-
   $.fn.stick_in_parent = function(opts) {
-    var elm, enable_bottoming, inner_scrolling, manual_spacer, offset_top, parent_selector, recalc_every, scrolling_parent, sticky_class, _fn, _i, _len;
+    var elm, enable_bottoming, inner_scrolling, manual_spacer, offset_top, parent_selector, recalc_every, scrolling_parent, sticky_class, win, _fn, _i, _len;
     if (opts == null) {
       opts = {};
     }
     sticky_class = opts.sticky_class, inner_scrolling = opts.inner_scrolling, recalc_every = opts.recalc_every, parent_selector = opts.parent, offset_top = opts.offset_top, manual_spacer = opts.spacer, enable_bottoming = opts.bottoming, scrolling_parent = opts.scrolling_parent;
+    win = $(window);
     if (offset_top == null) {
       offset_top = 0;
     }

@@ -4,7 +4,6 @@
 
 $ = @jQuery or window.jQuery
 
-win = $ window
 $.fn.stick_in_parent = (opts={}) ->
   {
     sticky_class
@@ -17,6 +16,7 @@ $.fn.stick_in_parent = (opts={}) ->
     scrolling_parent: scrolling_parent
   } = opts
 
+  win = $ window
   offset_top ?= 0
   parent_selector ?= undefined
   inner_scrolling ?= true
